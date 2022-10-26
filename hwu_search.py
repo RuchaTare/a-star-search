@@ -46,15 +46,17 @@ class FringeNode:
         self.node = node
         self.parent = parent
         self.gValue = cost
+        
         if (parent != None):
             self.gValue += parent.gValue
         
-    def getFValue(self):
+    def getFValue(self):        
         return self.gValue + self.node.value.getHeuristic()
     
     def __str__(self):
         return "FringeNode [node=" + str(self.node) + ", parent=" + str(self.parent) + ", gValue=" + str(self.gValue) + "]"
     
+
 class SearchProblem:
     def __init__(self, searchOrder):
         self.searchOrder = searchOrder
@@ -70,7 +72,6 @@ class SearchProblem:
                 break
             
             searchNode = fringe.pop()
-            print("Current node: " + str(searchNode))
             
             if (searchNode.node in visitedStates):
                 continue
